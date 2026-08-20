@@ -63,7 +63,7 @@ the training and diagnostic budgets so the whole notebook runs in a few minutes;
 results will not match the paper.
 
 Each notebook caches its trained estimator (`zika_density_estimator.pt`,
-`xf_npe_posterior_N1000000.pkl`) so the analysis sections can be re-run without
+`xf_npe_density_estimator.pkl`) so the analysis sections can be re-run without
 repeating training.
 
 ### Outputs
@@ -91,31 +91,13 @@ repeating training.
 | `figure_si3.pdf` | SI Figure 3 — posteriors vs grove size |
 | `figure_si4a.pdf`, `figure_si4b.pdf` | SI Figure 4 — SBC rank CDFs and TARP coverage |
 
-Figures 3 and 4 are composited from their panel files in the published article.
-Every figure is written as both `.pdf` (vector, editable text) and `.png`.
+
 
 ## Reproducibility
 
-Random seeds are set at the top of each notebook. Both simulators are stochastic
-and the flow is trained by stochastic gradient descent, so posterior summaries
-reproduce to within Monte Carlo error rather than exactly; the number of
+Random seeds are set at the top of each notebook. The number of
 posterior draws per record is `N_POST`, set in the configuration cell.
 
-## Method summary
-
-- **Observation-masked input.** For a record observed at a subset of the grid
-  times, the network input is `[y_1, …, y_T, m_1, …, m_T, c]`, where `m_t ∈ {0,1}`
-  marks availability and `c` holds contextual covariates (here the population or
-  grove size). The mask lets the network distinguish a genuine zero from a
-  missing observation — a distinction lost under interpolation or plain
-  zero-filling.
-- **Estimator.** Masked Autoregressive Flow trained with SNPE-C via the
-  [`sbi`](https://github.com/sbi-dev/sbi) library, single round, 10⁶ simulations,
-  with a `BoxUniform` proposal covering the effective support of the prior.
-- **Calibration.** Simulation-based calibration (rank uniformity, per parameter)
-  and TARP (joint coverage across all parameters), each on 10⁴ prior draws.
-
-## Citation
 
 ```bibtex
 @article{RetkuteGilligan_OMNPE,
