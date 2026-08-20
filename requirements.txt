@@ -1,0 +1,14 @@
+# Core inference
+sbi>=0.23
+torch>=2.0
+
+# Numerics and data handling
+numpy>=1.24
+pandas>=2.0
+scipy>=1.10
+
+# Figures
+matplotlib>=3.7
+
+# Notebook environment
+jupyterlab>=4.0
