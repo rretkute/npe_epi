@@ -20,7 +20,7 @@ a second, without retraining or MCMC sampling.
 |---|---|
 | `01_zika_french_polynesia.ipynb` | Zika virus, six French Polynesian archipelagos, weekly sentinel surveillance, 2013–14 |
 | `02_xylella_fastidiosa.ipynb` | *Xylella fastidiosa*, 17 olive groves in Apulia, annual disease-severity surveys, 2014–18 |
-| `requirements.txt` | Python dependencies |
+| `03_xylella_fastidiosa_vector.ipynb` | Above data for  *Xylella fastidiosa* fitted to host–vector transmission model |
 
 Each notebook is self-contained and runs top to bottom: simulate, train once,
 then evaluate the amortised posterior for every observational unit.
@@ -65,32 +65,6 @@ results will not match the paper.
 Each notebook caches its trained estimator (`zika_density_estimator.pt`,
 `xf_npe_density_estimator.pkl`) so the analysis sections can be re-run without
 repeating training.
-
-### Outputs
-
-**Notebook 1 — Zika**
-
-| Output | Paper item |
-|---|---|
-| `figure1.pdf` | Figure 1 — posterior-predictive fits, six archipelagos |
-| `figure2.pdf` | Figure 2 — sequential inference of *R*₀ |
-| `table3.csv` | Table 3 — *R*₀ compared with Kucharski *et al.* (2016) |
-| `figure_si1.pdf` | SI Figure 1 — posteriors vs population size |
-| `figure_si2a.pdf`, `figure_si2b.pdf` | SI Figure 2 — SBC rank CDFs and TARP coverage |
-
-**Notebook 2 — *Xylella fastidiosa***
-
-| Output | Paper item |
-|---|---|
-| `figure3a.pdf` | Figure 3A — posterior-predictive fits, 17 groves |
-| `figure3b.pdf` | Figure 3B — predicted state proportions at year 16 |
-| `figure3c.pdf` | Figure 3C — forecast variance vs extrapolation horizon |
-| `figure4a.pdf` | Figure 4A — all 127 survey schedules ranked by forecast variance |
-| `figure4b.pdf` | Figure 4B — best schedule at each observation count |
-| `table4.csv` | Table 4 — parameters compared with White *et al.* (2020) |
-| `figure_si3.pdf` | SI Figure 3 — posteriors vs grove size |
-| `figure_si4a.pdf`, `figure_si4b.pdf` | SI Figure 4 — SBC rank CDFs and TARP coverage |
-
 
 
 ## Reproducibility
